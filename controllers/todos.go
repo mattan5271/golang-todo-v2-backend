@@ -3,6 +3,7 @@ package controllers
 import (
 	"golang-todo-v2-backend/models"
 	"net/http"
+	"strconv"
 
 	"github.com/labstack/echo/v4"
 )
@@ -20,6 +21,17 @@ func createTodo(c echo.Context) error {
 	}
 	models.CreateTodo(t)
 	return c.JSON(http.StatusOK, t)
+}
+
+func updateTodo(c echo.Context) error {
+	id, _ := strconv.Atoi(c.Param("id"))
+	t := new(models.Todo)
+	if err := c.Bind(t); err != nil {
+		return c.JSON(http.StatusBadRequest, err)
+	}
+	t.ID = id
+	models.UreateTodo(t)
+	return c.JSON(http.StatusOK, &t)
 }
 
 func deleteTodo(c echo.Context) error {

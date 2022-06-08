@@ -19,6 +19,10 @@ func CreateTodo(todo *Todo) {
 	Db.Create(&todo)
 }
 
+func UreateTodo(todo *Todo) {
+	Db.Save(&todo)
+}
+
 func DeleteTodo(todo *Todo, id string) {
 	Db.Delete(&todo, id)
 }
