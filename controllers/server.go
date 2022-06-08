@@ -18,5 +18,6 @@ func StartEchoServer() {
 	})
 	e.GET("/todos", getAllTodos)
 	e.POST("/todos", createTodo)
+	e.DELETE("/todos/:id", deleteTodo)
 	e.Logger.Fatal(e.Start(":1323"))
 }

@@ -21,3 +21,10 @@ func createTodo(c echo.Context) error {
 	models.CreateTodo(t)
 	return c.JSON(http.StatusOK, t)
 }
+
+func deleteTodo(c echo.Context) error {
+	id := c.Param("id")
+	t := new(models.Todo)
+	models.DeleteTodo(t, id)
+	return c.NoContent(http.StatusNoContent)
+}

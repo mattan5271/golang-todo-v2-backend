@@ -18,3 +18,7 @@ func CreateTodo(todo *Todo) {
 	Db.NewRecord(todo)
 	Db.Create(&todo)
 }
+
+func DeleteTodo(todo *Todo, id string) {
+	Db.Delete(&todo, id)
+}
