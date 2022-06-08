@@ -7,6 +7,12 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
+func getAllTodos(c echo.Context) error {
+	todos := []models.Todo{}
+	models.GetAllTodos(&todos)
+	return c.JSON(http.StatusOK, todos)
+}
+
 func createTodo(c echo.Context) error {
 	t := new(models.Todo)
 	if err := c.Bind(t); err != nil {
