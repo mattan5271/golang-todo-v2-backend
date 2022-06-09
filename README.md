@@ -1,1 +1,5 @@
-# golang-todo-v2-backend
+### 主要機能
+CRUD機能
+
+### アピールポイント
+EchoやGormといったライブラリを使用して実装している点。
