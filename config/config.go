@@ -8,13 +8,10 @@ import (
 )
 
 type ConfigList struct {
-	DbDriverName   string
-	DbName         string
-	DbUserName     string
-	DbUserPassword string
-	DbHost         string
-	DbPort         string
-	ServerPort     int
+	Port      string
+	LogFile   string
+	SQLDriver string
+	DbName    string
 }
 
 var Config ConfigList
@@ -27,12 +24,9 @@ func init() {
 	}
 
 	Config = ConfigList{
-		DbDriverName:   cfg.Section("db").Key("db_driver_name").String(),
-		DbName:         cfg.Section("db").Key("db_name").String(),
-		DbUserName:     cfg.Section("db").Key("db_user_name").String(),
-		DbUserPassword: cfg.Section("db").Key("db_user_password").String(),
-		DbHost:         cfg.Section("db").Key("db_host").String(),
-		DbPort:         cfg.Section("db").Key("db_port").String(),
-		ServerPort:     cfg.Section("api").Key("server_port").MustInt(),
+		Port:      cfg.Section("web").Key("port").MustString("8080"),
+		LogFile:   cfg.Section("web").Key("logfile").String(),
+		SQLDriver: cfg.Section("db").Key("driver").String(),
+		DbName:    cfg.Section("db").Key("name").String(),
 	}
 }
